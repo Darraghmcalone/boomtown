@@ -1,4 +1,4 @@
-var strs = require('stringstream')
+const strs = require('stringstream');
 
 function tagsQueryString(tags, itemid, result) {
   /**
@@ -10,18 +10,18 @@ function tagsQueryString(tags, itemid, result) {
   return length === 0
     ? `${result};`
     : tags.shift() &&
-        tagsQueryString(
-          tags,
-          itemid,
-          `${result}($${tags.length + 1}, ${itemid})${length === 1 ? '' : ','}`
-        )
+    tagsQueryString(
+      tags,
+      itemid,
+      `${result}($${tags.length + 1}, ${itemid})${length === 1 ? '' : ','}`
+    )
 }
 
-module.exports = function(postgres) {
+module.exports = (postgres) => {
   return {
     async createUser({ fullname, email, password }) {
       const newUserInsert = {
-        text: '', // @TODO: Authentication - Server
+        text: 'INSERT into users(fullname, email, password) VALUES ($1, $2, $3) RETURNING *', // @TODO: Authentication - Server
         values: [fullname, email, password]
       }
       try {
@@ -40,7 +40,8 @@ module.exports = function(postgres) {
     },
     async getUserAndPasswordForVerification(email) {
       const findUserQuery = {
-        text: '', // @TODO: Authentication - Server
+        text: '',
+        // @TODO: Authentication - Server
         values: [email]
       }
       try {
@@ -73,7 +74,7 @@ module.exports = function(postgres) {
        */
 
       const findUserQuery = {
-        text: '', // @TODO: Basic queries
+        text: 'SELECT id, email, fullname, bio FROM users WHERE users.id = $1', // @TODO: Basic queries
         values: [id]
       }
 
@@ -87,10 +88,11 @@ module.exports = function(postgres) {
        */
 
       const user = await postgres.query(findUserQuery)
-      return user
+      return user.rows;
       // -------------------------------
     },
     async getItems(idToOmit) {
+      const whereClause = idToOmit ? `WHERE items.ownerid != ${idToOmit}` : '';
       const items = await postgres.query({
         /**
          *  @TODO: Advanced queries
@@ -103,7 +105,7 @@ module.exports = function(postgres) {
          *  to your query text using string interpolation
          */
 
-        text: ``,
+        text: `select * From items ${whereClause} RETURNING *`,
         values: idToOmit ? [idToOmit] : []
       })
       return items.rows
@@ -114,7 +116,7 @@ module.exports = function(postgres) {
          *  @TODO: Advanced queries
          *  Get all Items. Hint: You'll need to use a LEFT INNER JOIN among others
          */
-        text: ``,
+        text: `select * From items where id = '$1' RETURNING *`,
         values: [id]
       })
       return items.rows
@@ -125,14 +127,14 @@ module.exports = function(postgres) {
          *  @TODO: Advanced queries
          *  Get all Items. Hint: You'll need to use a LEFT INNER JOIN among others
          */
-        text: ``,
+        text: `select * From items where borrowerid = '$1' RETURNING *`,
         values: [id]
       })
       return items.rows
     },
     async getTags() {
       const tags = await postgres.query(/* @TODO: Basic queries */)
-      return tags.rows
+      values: []
     },
     async getTagsForItem(id) {
       const tagsQuery = {

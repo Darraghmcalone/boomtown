@@ -13,7 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "apollo-server": "^2.0.0-rc.0",
-    "apollo-server-express": "^2.0.0-rc.0",
+    "apollo-server-express": "^2.0.0-rc.12",
     "apollo-upload-server": "^5.0.0",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.3",
@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "jest-cli": "^23.2.0",
-    "nodemon": "^1.17.5"
+    "nodemon": "^1.18.3"
   },
   "jest": {
     "testPathIgnorePatterns": [
