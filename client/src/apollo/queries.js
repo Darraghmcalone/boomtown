@@ -33,7 +33,9 @@ const ItemFields = gql`
 `
 export const ITEM_QUERY = gql`
   query item($id: ID!) {
-    # @TODO: Query an item by its id and return the ItemFields fragment.
+    items(filter :$id) {
+      ...ItemFields
+    }
   }
   ${ItemFields}
 `

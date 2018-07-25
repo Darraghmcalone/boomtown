@@ -133,8 +133,13 @@ module.exports = (postgres) => {
       return items.rows
     },
     async getTags() {
-      const tags = await postgres.query(/* @TODO: Basic queries */)
+      const tags = await postgres.query({
+
+      text: `select * from tags`,
       values: []
+      })
+      return tags.rows
+
     },
     async getTagsForItem(id) {
       const tagsQuery = {
