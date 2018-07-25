@@ -56,6 +56,7 @@ module.exports = function (app) {
         }
       },
       async items() {
+        
         // @TODO: Replace this mock return statement with the correct items from Postgres
         return []
         // -------------------------------
