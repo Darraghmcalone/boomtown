@@ -50,18 +50,24 @@ export const ALL_ITEMS_QUERY = gql`
 `
 
 export const ALL_USER_ITEMS_QUERY = gql`
-  query user($id: ID!) {
+  query user($id: ID!, $bio: String, $email: String!, $fullname: String! ) {
+    user(id: ID!){
+    ...Itemnfields
     # @TODO: Query the bio, email, fullname, items, and borrowed for the user by id
     # Use the ItemFields fragment for the items and borrowed fields.
   }
+}
   ${ItemFields}
 `
 
 export const ALL_TAGS_QUERY = gql`
-  query {
-    # @TODO: Query the id and title fields for tags.
-  }
-`
+    query tags($filter: tags) {
+      tags(filter: $filter) {
+        ...ItemFields
+      }
+    }
+    ${ItemFields}
+  `
 
 export const ADD_ITEM_MUTATION = gql`
   mutation addItem($item: NewItemInput!, $image: Upload!) {

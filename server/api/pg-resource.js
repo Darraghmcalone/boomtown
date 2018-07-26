@@ -88,63 +88,63 @@ module.exports = (postgres) => {
        */
 
       const user = await postgres.query(findUserQuery)
-      return user.rows;
+      return user.rows[0];
       // -------------------------------
     },
     async getItems(idToOmit) {
-      const whereClause = idToOmit ? `WHERE items.ownerid != ${idToOmit}` : '';
+      const whereClause = idToOmit ? `WHERE items.ownerid != $1` : '';
       const items = await postgres.query({
-        /**
-         *  @TODO: Advanced queries
-         *
-         *  Get all Items. If the idToOmit parameter has a value,
-         *  the query should only return Items were the ownerid column
-         *  does not contain the 'idToOmit'
-         *
-         *  Hint: You'll need to use a conditional AND and WHERE clause
-         *  to your query text using string interpolation
-         */
-
-        text: `select * From items ${whereClause} RETURNING *`,
+        text: `
+          select
+            id,
+            title,
+            imageurl,
+            description,
+            ownerid,
+            borrowerid,
+            created
+          From items
+          ${whereClause}
+        `,
         values: idToOmit ? [idToOmit] : []
       })
-      return items.rows
+      console.log('items.rows:', items.rows);
+      return items.rows;
     },
     async getItemsForUser(id) {
       const items = await postgres.query({
-        /**
-         *  @TODO: Advanced queries
-         *  Get all Items. Hint: You'll need to use a LEFT INNER JOIN among others
-         */
-        text: `select * From items where id = '$1' RETURNING *`,
+        text: `select * From items where ownerid = $1`,
         values: [id]
       })
-      return items.rows
+      return items.rows;
     },
-    async getBorrowedItemsForUser(id) {
+    async getBorrowedItemsForUser(userid) {
       const items = await postgres.query({
-        /**
-         *  @TODO: Advanced queries
-         *  Get all Items. Hint: You'll need to use a LEFT INNER JOIN among others
-         */
-        text: `select * From items where borrowerid = '$1' RETURNING *`,
-        values: [id]
+        text: `select * From items where borrowerid = $1`,
+        values: [userid]
       })
-      return items.rows
+      return items.rows;
     },
     async getTags() {
       const tags = await postgres.query({
-
-      text: `select * from tags`,
-      values: []
+        text: `
+          SELECT id, title
+          FROM tags
+        `,
+        values: []
       })
-      return tags.rows
+      return tags.rows;
 
     },
-    async getTagsForItem(id) {
+    async getTagsForItem(itemid) {
       const tagsQuery = {
-        text: ``, // @TODO: Advanced queries
-        values: [id]
+        text: `
+          SELECT *
+          FROM tags, itemtags
+          WHERE itemtags.itemid = $1
+          AND itemtags.tagid = tags.id
+        `,
+        values: [itemid]
       }
 
       const tags = await postgres.query(tagsQuery)

@@ -49,21 +49,29 @@ module.exports = function (app) {
         try {
           const user = await pgResource.getUserById(id)
           console.log('user:', user);
-          return user[0];
+          return user;
 
         } catch (e) {
           throw new ApolloError(e)
         }
       },
-      async items() {
-        
-        // @TODO: Replace this mock return statement with the correct items from Postgres
-        return []
+      async items(parent, { id }, { pgResource }, info) {
+        try {
+          const items = await pgResource.getItems(id);
+          console.log('items:', items);
+          return items;
+        } catch (e) {
+          throw new ApolloError(e)
+        }
         // -------------------------------
       },
-      async tags() {
-        // @TODO: Replace this mock return statement with the correct tags from Postgres
-        return []
+      async tags(parent, { id }, { pgResource }, info) {
+        try {
+          const tags = await pgResource.getTags(id);
+          return tags;
+        } catch (e) {
+          throw new ApolloError(e);
+        }
         // -------------------------------
       }
     },
