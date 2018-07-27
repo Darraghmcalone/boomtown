@@ -92,6 +92,7 @@ module.exports = (postgres) => {
       // -------------------------------
     },
     async getItems(idToOmit) {
+      console.log('getItems: idToOmit:', idToOmit);
       const whereClause = idToOmit ? `WHERE items.ownerid != $1` : '';
       const items = await postgres.query({
         text: `
@@ -137,6 +138,7 @@ module.exports = (postgres) => {
 
     },
     async getTagsForItem(itemid) {
+      console.log('getTagsForItem: itemid:', itemid);
       const tagsQuery = {
         text: `
           SELECT *
@@ -147,8 +149,11 @@ module.exports = (postgres) => {
         values: [itemid]
       }
 
+      console.log('getTagsForItem: tagsQuery:', tagsQuery);
+      
       const tags = await postgres.query(tagsQuery)
-      return tags.rows
+      console.log('getTagsForItem: tags:', tags);
+      return tags.rows;
     },
     async saveNewItem({ item, image, user }) {
       /**

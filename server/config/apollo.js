@@ -46,7 +46,7 @@ module.exports = function({ app, pgResource }) {
     app,
     uploads: true,
     // @TODO: Add the CORS_CONFIG from your application configuration
-    cors: 'CORS_CONFIG',
+    cors: app.get('CORS_CONFIG'),
     // -------------------------------
     uploads: apolloUploadExpress({
       maxFileSize: 10000000 // 10mb

@@ -13,7 +13,7 @@ VALUES
     ('darragh@example.com', 'darragh example', 'making an example of Darragh...')
 ;
 
-INSERT INTO items (ownerid, title, imageurl, description)
+INSERT INTO items (ownerid, title, imageurl, description, borrower)
 VALUES (
         1,
         'Aeroplane toy',
