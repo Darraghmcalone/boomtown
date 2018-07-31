@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import { Redirect, Route, Switch } from 'react-router';
-import {home} from '../pages/Home';
+import {Home} from '../pages/Home';
 import {Items} from '../pages/Items';
-import {share} from '../pages/Share';
+import {Share} from '../pages/Share';
 import {profile} from '../pages/Profile';
 
 export default () => (
