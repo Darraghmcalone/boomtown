@@ -88,11 +88,10 @@ module.exports = (postgres) => {
        */
 
       const user = await postgres.query(findUserQuery)
-      return user.rows[0];
+      return user.rows;
       // -------------------------------
     },
     async getItems(idToOmit) {
-      console.log('getItems: idToOmit:', idToOmit);
       const whereClause = idToOmit ? `WHERE items.ownerid != $1` : '';
       const items = await postgres.query({
         text: `
@@ -109,9 +108,9 @@ module.exports = (postgres) => {
         `,
         values: idToOmit ? [idToOmit] : []
       })
-      console.log('items.rows:', items.rows);
       return items.rows;
     },
+
     async getItemsForUser(id) {
       const items = await postgres.query({
         text: `select * From items where ownerid = $1`,
@@ -119,6 +118,7 @@ module.exports = (postgres) => {
       })
       return items.rows;
     },
+
     async getBorrowedItemsForUser(userid) {
       const items = await postgres.query({
         text: `select * From items where borrowerid = $1`,
@@ -138,7 +138,6 @@ module.exports = (postgres) => {
 
     },
     async getTagsForItem(itemid) {
-      console.log('getTagsForItem: itemid:', itemid);
       const tagsQuery = {
         text: `
           SELECT *
@@ -149,10 +148,9 @@ module.exports = (postgres) => {
         values: [itemid]
       }
 
-      console.log('getTagsForItem: tagsQuery:', tagsQuery);
+  
       
       const tags = await postgres.query(tagsQuery)
-      console.log('getTagsForItem: tags:', tags);
       return tags.rows;
     },
     async saveNewItem({ item, image, user }) {

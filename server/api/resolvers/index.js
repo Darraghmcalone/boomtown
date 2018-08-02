@@ -47,7 +47,6 @@ module.exports = function (app) {
       async user(parent, { id }, { pgResource }, info) {
         try {
           const user = await pgResource.getUserById(id)
-          console.log('user:', user);
           return user;
 
         } catch (e) {
@@ -57,7 +56,6 @@ module.exports = function (app) {
       async items(parent, { filter }, { pgResource }, info) {
         try {
           const items = await pgResource.getItems(filter);
-          console.log('items:', items);
           return items;
         } catch (e) {
           throw new ApolloError(e)

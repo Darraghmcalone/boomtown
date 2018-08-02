@@ -1,6 +1,6 @@
 import { withStyles } from '@material-ui/core/styles'
 import React from 'react'
-import { ItemsContainer} from './container/itemscontainer'
+import ItemsContainer from '../../containers/ItemsContainer'
 import styles from './styles'
 
 const Items = ({ classes }) => {

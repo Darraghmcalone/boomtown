@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
 import { Redirect, Route, Switch } from 'react-router';
-import {Home} from '../pages/Home';
-import {Items} from '../pages/Items';
-import {Share} from '../pages/Share';
-import {profile} from '../pages/Profile';
+import Home from '../pages/Home';
+import Items from '../pages/Items';
+import Share from '../pages/Share';
+import Profile from '../pages/Profile';
 
 export default () => (
   <Fragment>
@@ -15,7 +15,7 @@ export default () => (
       <Route exact path="/items" component={Items} />
       <Route exact path="/share" component={Share} />
       <Route exact path="/profile" component={Profile} />
-      <Route exact path="/profile/:userid" component={profile} />
+      <Route exact path="/profile/:userid" component={Profile} />
       <Redirect to='/items'/>
       
     </Switch>

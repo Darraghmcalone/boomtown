@@ -11,7 +11,7 @@ import {
   ALL_ITEMS_QUERY,
   ALL_USER_ITEMS_QUERY,
   ADD_ITEM_MUTATION
-} from '../ApolloClient/queries'
+} from '../apollo/queries'
 
 const itemsData = ({ render }) => {
   return (
@@ -50,7 +50,7 @@ const addItem = ({ render }) => {
 const ItemsContainer = adopt({
   // @TODO: Uncomment each line as you write the corresponding query.
   // tagData,
-  // itemsData,
+  itemsData,
   // userItemsData,
   // addItem
   // -------------------------------
