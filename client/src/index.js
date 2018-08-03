@@ -28,17 +28,16 @@ import client from './apollo';
  // import Routes from './routes/index'
  
 
-/**
- * @TODO: Initialize Redux Store
- *
- * Uncomment the following line when your Redux store is configured
- *
- * import store from './redux'
- *
- * Below in your <App />, wrap a <ReduxProvider /> component around all
- * of the app's children, and pass it the imported `store` as the `store`
- * prop's value.
- */
+// /**
+//  * @TODO: Initialize Redux Store
+//  *
+//  * Uncomment the following line when your Redux store is configured
+  //  import store from './redux'
+//  *
+//  * Below in your <App />, wrap a <ReduxProvider /> component around all
+//  * of the app's children, and pass it the imported `store` as the `store`
+//  * prop's value.
+//  */
 
 /**
  * @TODO: Add the Viewer Context

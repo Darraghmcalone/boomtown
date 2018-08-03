@@ -10,7 +10,8 @@ import AccountForm from '../../components/AccountForm'
 import styles from './styles'
 
 const Home = ({ classes }) => {
-  return (
+  return ( 
+  
     <Grid
       container
       className={classes.root}
@@ -29,12 +30,15 @@ const Home = ({ classes }) => {
         <Typography variant="display4" className={classes.headline}>
           Share. Borrow. Prosper.
         </Typography>
-      </Grid>
+      </Grid> 
+      
       <Grid item xs={12} sm={12} md={6}>
         <Typography gutterBottom variant="headline">
           Welcome home.
         </Typography>
-        <AccountForm />
+      
+        <AccountForm>
+        </AccountForm>
       </Grid>
     </Grid>
   )

@@ -4,6 +4,7 @@ import Home from '../pages/Home';
 import Items from '../pages/Items';
 import Share from '../pages/Share';
 import Profile from '../pages/Profile';
+import Test from '../pages/Test';
 
 export default () => (
   <Fragment>
@@ -13,9 +14,11 @@ export default () => (
       
       <Route exact path="/welcome" component={Home} />
       <Route exact path="/items" component={Items} />
+      <Route exact path="/test" component={Test} />
       <Route exact path="/share" component={Share} />
       <Route exact path="/profile" component={Profile} />
       <Route exact path="/profile/:userid" component={Profile} />
+
       <Redirect to='/items'/>
       
     </Switch>
