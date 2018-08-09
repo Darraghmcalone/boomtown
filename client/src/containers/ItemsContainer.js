@@ -14,9 +14,10 @@ import {
 } from '../apollo/queries'
 
 const itemsData = ({ render }) => {
+ 
   return (
     <Query query={ALL_ITEMS_QUERY} variables={{ filter: null }}>
-      {({ data: { items }, loading }) => render({ items, loading})}
+      {({ data: { items }, loading }) => render({items, loading})}
     </Query>
   );
 };

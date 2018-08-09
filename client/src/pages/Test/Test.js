@@ -5,7 +5,7 @@ const Test = ({ classes }) => {
         <div>
             <p>
                 This is the share page located at <code>/share</code>.
-        </p>
+            </p>
         </div>
     )
 }
