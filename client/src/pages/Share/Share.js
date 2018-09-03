@@ -3,7 +3,7 @@ import React from 'react'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import styles from './styles'
-import ShareItemForm from '../../components/ShareItemForm';
+import ShareItemForm from '../../components/ShareItemForm'
 
 const Share = ({ classes }) => {
   return (
@@ -12,16 +12,19 @@ const Share = ({ classes }) => {
       className={classes.root}
       direction="row"
       alignItems="center"
-      justify="center"
+      justify="center"  
     >
-      <Typography variant="display4" className={classes.headline}>
-          Share Page
+      <Grid item xs={12} sm={12} md={6} >
+        <Typography flexDirection="column" variant="display4" className={classes.headline}>
+          Share.
+          Borrow.
+          Prosper.
         </Typography>
-    
         <ShareItemForm>
         </ShareItemForm>
       </Grid>
-    
+    </Grid>
+
 
 
   )

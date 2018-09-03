@@ -1,6 +1,7 @@
 const styles = theme => ({
     root: {
       flexGrow: 1,
+      flexDirection: "space-between",
       height: '100%',
       background: 'white',
       padding: theme.spacing.unit * 5,
