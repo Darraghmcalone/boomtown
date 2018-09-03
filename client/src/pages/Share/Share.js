@@ -15,7 +15,7 @@ const Share = ({ classes }) => {
       justify="center"
     >
       <Typography variant="display4" className={classes.headline}>
-          Share. Borrow. Prosper.
+          Share Page
         </Typography>
     
         <ShareItemForm>
