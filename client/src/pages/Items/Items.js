@@ -4,11 +4,12 @@ import ItemsContainer from '../../containers/ItemsContainer'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import styles from './styles'
+import {connect} from 'react-redux'
 
 const Items = ({ classes }) => {
   return(
   <Grid>
-  {/* <ItemsContainer>
+  <ItemsContainer>
   {({ itemsData: { items, loading } }) => {
     return loading
       ? (
@@ -18,12 +19,15 @@ const Items = ({ classes }) => {
         <p>items go here</p>
       );
   }}
-</ItemsContainer> */}
+</ItemsContainer>
       <Typography variant="display4" className={classes.headline}>
       Items Page
     </Typography>
     </Grid>
   );
 };
+const mapStateToProps = ({ items }) => ({
+  items
+ });
 
-export default withStyles(styles)(Items)
+export default connect(mapStateToProps)(withStyles(styles)(Items));

@@ -11,18 +11,19 @@ import {ViewerProvider} from './context/ViewerProvider'
 import registerServiceWorker from './registerServiceWorker'
 import theme from './theme'
 import client from './apollo';
-
+import store from './redux'
 /**
  * @TODO: Initialize Apollo Client
  *
  * Uncomment the following line when Apollo Client is configured:
  *
- * import client from './apollo'
+ * 
  *
  * Below in your <App />, wrap your pages in an <ApolloProvider /> component
  * and pass it `client` as the `client` prop value so they will
  * have access to data exposed by your GraphQL API.
  */
+
 
 
  // import Routes from './routes/index'
@@ -55,16 +56,19 @@ import './index.css'
 
 const App = () => {
   return (
+    <ReduxProvider store={store}>
     <MuiThemeProvider theme={theme}>
       <CssBaseline />
       <ApolloProvider client={client}>
       <ViewerProvider>
         <BrowserRouter>
+       
         <Layout />
         </BrowserRouter>
       </ViewerProvider>
       </ApolloProvider>
     </MuiThemeProvider>
+    </ReduxProvider>
   )
 }
 

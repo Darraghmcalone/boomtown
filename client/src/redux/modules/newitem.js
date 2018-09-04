@@ -47,7 +47,7 @@ export default (state = initialState , action) => {
        }
        case RESET_NEW_ITEM_IMAGE: {
            return {
-               ...state, imagurl: intialState.imageurl
+               ...state, imagurl: initialState.imageurl
            };
        }
        default: {

@@ -14,14 +14,19 @@ import {
 } from '../apollo/queries'
 
 const itemsData = ({ render }) => {
- 
+
   return (
     <Query query={ALL_ITEMS_QUERY} variables={{ filter: null }}>
-      {({ data: { items }, loading }) => render({items, loading})}
-    </Query>
-  );
-};
+      {({ loading, error, data }) => {
+        if (loading) return null;
+        if (error) return `Error!: ${error}`;
 
+        return (
+          `${data.items}`
+        );
+      }}</Query>
+  )
+}
 const userItemsData = ({ userId, render }) => {
   /**
    * @TODO: Use Apollo's <Query /> component to fetch all of a user's items.

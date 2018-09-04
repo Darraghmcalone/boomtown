@@ -4,71 +4,71 @@ import gql from 'graphql-tag'
  * Item and user-related queries and mutations.
  */
 
-const ItemFields = gql`
-  fragment ItemFields on Item {
-    id
-    title
-    imageurl
-    description
-    created
-    tags {
-      id
-      title
-    }
+// const ItemFields = gql`
+//   fragment ItemFields on Item {
+//     id
+//     title
+//     imageurl
+//     description
+//     created
+//     tags {
+//       id
+//       title
+//     }
 
-    itemowner {
-      id
-      fullname
-      email
-      bio
-    }
-    
-    borrower {
-      id
-      fullname
-      email
-      bio
-    }
-    # See the Apollo docs for instructions on how to use fragments:
-    # https://www.apollographql.com/docs/angular/features/fragments.html
-  }
-`
+//     itemowner {
+//       id
+//       fullname
+//       email
+//       bio
+//     }
 
-export const ITEM_QUERY = gql`
-  query item($id: ID!) {
-    items(filter :$id) {
-      ...ItemFields
-    }
-  }
-  ${ItemFields}
-`
+//     borrower {
+//       id
+//       fullname
+//       email
+//       bio
+//     }
+//     # See the Apollo docs for instructions on how to use fragments:
+//     # https://www.apollographql.com/docs/angular/features/fragments.html
+//   }
+// `
+
+// export const ITEM_QUERY = gql`
+//   query item($id: ID!) {
+//     items(filter :$id) {
+//       ...ItemFields
+//     }
+//   }
+//   ${ItemFields}
+// `
 
 export const ALL_ITEMS_QUERY = gql`
-  query items($filter: ID) {
-    items(filter: $filter) {
-      ...ItemFields
-    }
-  }
-  ${ItemFields}
-`
+query {
+ items {
+       id
+   title
+   description
+     }
+ }`
 
-export const ALL_USER_ITEMS_QUERY = gql`
-  query user($id: ID!, $bio: String, $email: String!, $fullname: String! ) {
-    user(id: ID){
-    ...Itemnfields
-  }
-}
-  ${ItemFields}
-`
+// export const ALL_USER_ITEMS_QUERY = gql`
+//   query user($id: ID!, $bio: String, $email: String!, $fullname: String! ) {
+//     user(id: ID){
+//     ...Itemnfields
+//   }
+// }
+//   ${ItemFields}
+// `
 
-export const ALL_TAGS_QUERY = gql`
-    query tags($filter: tags) {
-      tags(filter: $filter) {
-        ...ItemFields
-      }
-    }
-    ${ItemFields}
-  `
+// export const ALL_TAGS_QUERY = gql`
+//     query tags($filter: tags) {
+//       tags(filter: $filter) {
+//         ...ItemFields
+//       }
+//     }
+//     ${ItemFields}
+//   `
 
 // export const ADD_ITEM_MUTATION = gql`
 //   mutation addItem($item: NewItemInput!, $image: Upload!) {
@@ -97,7 +97,7 @@ export const ALL_TAGS_QUERY = gql`
 
 // export const SIGNUP_MUTATION = gql`
 //   mutation signup($user: SignupInput!) {
-    
+
 //     ...itemfields
 //   }
 // `

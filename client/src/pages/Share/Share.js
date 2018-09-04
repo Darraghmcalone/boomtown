@@ -15,7 +15,7 @@ const Share = ({ classes }) => {
       justify="center"  
     >
       <Grid item xs={12} sm={12} md={6} >
-        <Typography flexDirection="column" variant="display4" className={classes.headline}>
+        <Typography flexdirection="column" variant="display4" className={classes.headline}>
           Share.
           Borrow.
           Prosper.

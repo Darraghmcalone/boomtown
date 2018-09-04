@@ -26,19 +26,19 @@ class ShareItemForm extends Component {
     const { classes } = this.props;
     return (
       <Grid
-      container spacing={24}
+        container spacing={24}
         direction="column"
-
+        className={classes.accountForm}
       >
-        <FormControl container spacing={24}>
+        <FormControl>
           <Button
             size="large"
-            color="yellow">
+          >
             SELECT AN IMAGE
           </Button>
           <InputLabel htmlFor="name">Name Your Item</InputLabel>
           <Field
-          padding="200"
+            padding="200"
             render={({ input, meta }) => (
               <Input
                 id="product-name"
@@ -67,7 +67,7 @@ class ShareItemForm extends Component {
 
           <Button
             size="large"
-            color="red">
+            color="primary">
             Share
           </Button>
 
