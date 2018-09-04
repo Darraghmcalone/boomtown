@@ -17,8 +17,8 @@ INSERT INTO items (ownerid, title, imageurl, description, borrower)
 VALUES (
         1,
         'Aeroplane toy',
-        'https://www.google.co.uk/search?q=google&source=lnms&tbm=isch&sa=X&ved=0ahUKEwj24arg5JTcAhWNy6QKHe2vCm4Q_AUIDSgE&biw=1366&bih=635#imgrc=_xiFa-Slsm8tuM:',
-        'Nice view over the clouds'
+        'https://img.maximummedia.ie/joe_ie/eyJkYXRhIjoie1widXJsXCI6XCJodHRwOlxcXC9cXFwvbWVkaWEtam9lLm1heGltdW1tZWRpYS5pZS5zMy5hbWF6b25hd3MuY29tXFxcL3dwLWNvbnRlbnRcXFwvdXBsb2Fkc1xcXC8yMDEzXFxcLzA2XFxcL2JhbGxsaWdodHMuanBnXCIsXCJ3aWR0aFwiOjc2NyxcImhlaWdodFwiOjQzMSxcImRlZmF1bHRcIjpcImh0dHBzOlxcXC9cXFwvd3d3LmpvZS5pZVxcXC9hc3NldHNcXFwvaW1hZ2VzXFxcL2pvZVxcXC9uby1pbWFnZS5wbmc_dj01XCJ9IiwiaGFzaCI6ImJmOTlhNjBkY2I4NzY4NTQ2MDJhOWU5MTY3ODE5ODlkYjEzZGE3YjUifQ==/balllights.jpg',
+                'Nice view over the clouds'
     ),
     (
         1,

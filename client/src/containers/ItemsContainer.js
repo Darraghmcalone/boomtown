@@ -20,9 +20,17 @@ const itemsData = ({ render }) => {
       {({ loading, error, data }) => {
         if (loading) return null;
         if (error) return `Error!: ${error}`;
-
+console.log("data:", data.items)
         return (
-          `${data.items}`
+          data.items.map(item => {
+            return (
+              <div>
+                <h1>{item.title}</h1>
+                <p>{item.description}</p>
+                <img src = {item.imageurl} />
+              </div>
+            )
+          })
         );
       }}</Query>
   )

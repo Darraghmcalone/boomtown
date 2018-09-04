@@ -49,6 +49,7 @@ query {
        id
    title
    description
+   imageurl
      }
  }`
 
