@@ -2,7 +2,6 @@ import { adopt } from 'react-adopt'
 import { Query, Mutation } from 'react-apollo'
 import React from 'react'
 import Button from '@material-ui/core/Button'
-
 // @TODO: Uncommment this line when the ViewerProvider is added to the app.
 // import { ViewerContext } from '../context/ViewerProvider'
 // -------------------------------
@@ -29,9 +28,8 @@ const itemsData = ({ render }) => {
                 <h1>{item.title}</h1>
                 <p>{item.description}</p>
                 <img src={item.imageurl} />
-                <Button>
-                  Borrow
-                </Button>
+                <p>{item.tags}</p>
+                <Button>Borrow</Button>
               </div>
             )
           })

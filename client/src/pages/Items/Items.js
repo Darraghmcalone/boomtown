@@ -9,10 +9,10 @@ import {connect} from 'react-redux'
 const Items = ({ classes }) => {
   return(
   <Grid>      
-    <Typography variant="display4" className={classes.headline}>
+    <Typography variant="display4">
       Items Page
     </Typography>
-  <ItemsContainer>
+  <ItemsContainer className={classes.container}>
   {({ itemsData: { items, loading } }) => {
     return loading
       ? (

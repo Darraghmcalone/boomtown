@@ -21,8 +21,9 @@ class AccountForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      formToggle: true
-    };
+      username: '',
+      password: ''
+    }
   }
 
   render() {
@@ -82,10 +83,8 @@ class AccountForm extends Component {
                     <Input
                       id="password"
                       type="password"
-                      inputProps={{
-                        autoComplete: 'off'
-                      }}
-                      value={''}
+                      onChange={(event, newValue) =>
+                        this.setState({ username: newValue })}
                     />
                   )}
                 />

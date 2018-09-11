@@ -53,47 +53,17 @@ module.exports = (postgres) => {
       }
     },
     async getUserById(id) {
-      /**
-       *  @TODO: Handling Server Errors
-       *
-       *  Inside of our resuorce methods we get to determine wen and how errors are returned
-       *  to our resolvers using try / catch / throw semantics.
-       *
-       *  Ideally, the errors that we'll throw from our resource should be able to be used by the client
-       *  to display user feedback. This means we'll be catching errors and throwing new ones.
-       *
-       *  Errors thrown from our resource will be captured and returned from our resolvers.
-       *
-       *  This will be the basic logic for this resource method:
-       *  1) Query for the user using the given id. If no user is found throw an error.
-       *  2) If there is an error with the query (500) throw an error.
-       *  3) If the user is found and there are no errors, return only the id, email, fullname, bio fields.
-       *     -- this is important,don't return the password!
-       *
-       *  You'll need to complete the query first before attempting this exercise.
-       */
-
       const findUserQuery = {
         text: 'SELECT id, email, fullname, bio FROM users WHERE users.id = $1', // @TODO: Basic queries
         values: [id]
       }
 
-      /**
-       *  Refactor the following code using the error handling logic described above.
-       *  When you're done here, ensure all of the resource methods in this file
-       *  include a try catch, and throw appropriate errors.
-       *
-       *  Here is an example throw statement: throw 'User was not found.'
-       *  Customize your throw statements so the message can be used by the client.
-       */
-
-      const user = await postgres.query(findUserQuery)
-      return user.rows;
-      // -------------------------------
+      const user = await postgres.query(findUserQuery);
+      return user.rows[0];
     },
     async getItems(idToOmit) {
       const whereClause = idToOmit ? `WHERE items.ownerid != $1` : '';
-      const items = await postgres.query({
+      const query = {
         text: `
           select
             id,
@@ -107,15 +77,18 @@ module.exports = (postgres) => {
           ${whereClause}
         `,
         values: idToOmit ? [idToOmit] : []
-      })
+      };
+      const items = await postgres.query(query);
       return items.rows;
     },
 
     async getItemsForUser(id) {
-      const items = await postgres.query({
+      const query = {
         text: `select * From items where ownerid = $1`,
         values: [id]
-      })
+      };
+      const items = await postgres.query(query);
+
       return items.rows;
     },
 
@@ -135,7 +108,6 @@ module.exports = (postgres) => {
         values: []
       })
       return tags.rows;
-
     },
     async getTagsForItem(itemid) {
       const tagsQuery = {
@@ -148,8 +120,6 @@ module.exports = (postgres) => {
         values: [itemid]
       }
 
-  
-      
       const tags = await postgres.query(tagsQuery)
       return tags.rows;
     },

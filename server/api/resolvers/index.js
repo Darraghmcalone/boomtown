@@ -42,20 +42,19 @@ module.exports = function (app) {
          *  the token's stored user here. If there is no token, the user has signed out,
          *  in which case you'll return null
          */
-        return null
+        return null;
       },
       async user(parent, { id }, { pgResource }, info) {
         try {
-          const user = await pgResource.getUserById(id)
+          const user = await pgResource.getUserById(id);
           return user;
-
         } catch (e) {
           throw new ApolloError(e)
         }
       },
-      async items(parent, { filter }, { pgResource }, info) {
+      async items(parent, { id }, { pgResource }, info) {
         try {
-          const items = await pgResource.getItems(filter);
+          const items = await pgResource.getItems(id);
           return items;
         } catch (e) {
           throw new ApolloError(e)
@@ -87,44 +86,28 @@ module.exports = function (app) {
 
       // @TODO: Uncomment these lines after you define the User type with these fields
 
-      async items({ id }, args, { pgResource }, info) {
+      async items({id}, args, { pgResource }, info) {
         try {
           const items = await pgResource.getItemsForUser(id);
           return items;
         } catch (e) {
-          throw new ApolloError(e)
+          throw new ApolloError(e);
         }
-
       },
       async borrowed({ id }, args, { pgResource }, info) {
         try {
           const borrowed = await pgResource.getBorrowedItemsForUser(id);
           return borrowed;
         } catch (e) {
-          throw new ApolloError(e)
+          throw new ApolloError(e);
         }
-
-
       }
-
     },
 
     Item: {
-      /**
-       *  @TODO: Advanced resolvers
-       *
-       *  The Item GraphQL type has two fields that are not present in the
-       *  Items table in Postgres: itemowner, tags and borrower.
-       *
-       * According to our GraphQL schema, the itemowner and borrower should return
-       * a User (GraphQL type) and tags should return a list of Tags (GraphQL type)
-       *
-       */
-      // @TODO: Uncomment these lines after you define the Item type with these fields
-
-      async itemowner({ id }, args, { pgResource }, info) {
+      async itemowner({ ownerid }, args, { pgResource }, info) {
         try {
-          const itemowner = await pgResource.getUserById(id)
+          const itemowner = await pgResource.getUserById(ownerid);
           return itemowner;
         } catch (e) {
           throw new ApolloError(e);
@@ -132,7 +115,6 @@ module.exports = function (app) {
       },
 
       async tags({ id }, args, { pgResource }, info) {
-        // @TODO: Replace this mock return statement with the correct tags for the queried Item from Postgres
         try {
           const tags = await pgResource.getTagsForItem(id);
           return tags;

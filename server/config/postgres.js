@@ -5,15 +5,9 @@ module.exports = function(app) {
   const user = app.get('PG_USER');
   const password = app.get('PG_PASSWORD');
   const database = app.get('PG_DB');
-  const idleTimeoutMillis = app.get('30000')
-  const connectionTimeoutMillis = app.get('2000')
+  const idleTimeoutMillis = 30000;
+  const connectionTimeoutMillis = 2000;
 
-  /**
-   * @TODO: Configuration Variables
-   *
-   *  Retrieve the necessary information to connect to Postgres
-   *  For example: app.get('PG_DB')
-   */
   return new Pool({
     host,
     user,
