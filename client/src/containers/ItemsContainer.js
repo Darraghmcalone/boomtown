@@ -1,6 +1,7 @@
 import { adopt } from 'react-adopt'
 import { Query, Mutation } from 'react-apollo'
 import React from 'react'
+import Button from '@material-ui/core/Button'
 
 // @TODO: Uncommment this line when the ViewerProvider is added to the app.
 // import { ViewerContext } from '../context/ViewerProvider'
@@ -20,14 +21,17 @@ const itemsData = ({ render }) => {
       {({ loading, error, data }) => {
         if (loading) return null;
         if (error) return `Error!: ${error}`;
-console.log("data:", data.items)
+        console.log("data:", data.items)
         return (
-          data.items.map(item => {
+          data.items.map((item, index) => {
             return (
-              <div>
+              <div key={index}>
                 <h1>{item.title}</h1>
                 <p>{item.description}</p>
-                <img src = {item.imageurl} />
+                <img src={item.imageurl} />
+                <Button>
+                  Borrow
+                </Button>
               </div>
             )
           })

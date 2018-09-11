@@ -62,7 +62,6 @@ const App = () => {
       <ApolloProvider client={client}>
       <ViewerProvider>
         <BrowserRouter>
-       
         <Layout />
         </BrowserRouter>
       </ViewerProvider>

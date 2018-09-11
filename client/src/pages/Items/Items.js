@@ -8,7 +8,10 @@ import {connect} from 'react-redux'
 
 const Items = ({ classes }) => {
   return(
-  <Grid>
+  <Grid>      
+    <Typography variant="display4" className={classes.headline}>
+      Items Page
+    </Typography>
   <ItemsContainer>
   {({ itemsData: { items, loading } }) => {
     return loading
@@ -20,9 +23,7 @@ const Items = ({ classes }) => {
       );
   }}
 </ItemsContainer>
-      <Typography variant="display4" className={classes.headline}>
-      Items Page
-    </Typography>
+
     </Grid>
   );
 };
