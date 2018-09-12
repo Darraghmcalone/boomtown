@@ -22,7 +22,8 @@ module.exports = gql`
     itemowner: User!
     tags: [Tag]
     # created: Date() custom date scalar
-    borrower: [User]
+    borrower: User
+    created: String
   }
 
   type User {

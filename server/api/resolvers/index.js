@@ -123,9 +123,9 @@ module.exports = function (app) {
         }
       },
 
-      async borrower({ id }, args, { pgResource }, info) {
+      async borrower({ borrowerid }, args, { pgResource }, info) {
         try {
-          const borrower = await pgResource.getBorrowedItemsForUser(id);
+          const borrower = await pgResource.getUserById(borrowerid);
           return borrower;
         } catch (e) {
           throw new ApolloError(e);

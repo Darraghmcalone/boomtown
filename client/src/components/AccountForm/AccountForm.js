@@ -49,11 +49,8 @@ class AccountForm extends Component {
                       <Input
                         id="fullname"
                         type="text"
-                        {...input}
-                        inputProps={{
-                          autoComplete: 'off'
-                        }}
-                        value={''}
+                        onChange={(event, newValue) =>
+                          this.setState({ fullname: newValue })}
                       />
                     )}
                   />
@@ -66,11 +63,8 @@ class AccountForm extends Component {
                     <Input
                       id="email"
                       type="text"
-                      inputProps={{
-                        autoComplete: 'off'
-                      }}
-                      value={''}
-
+                      onChange={(event, newValue) =>
+                        this.setState({ email: newValue })}
                     />
                   )}
 
@@ -84,7 +78,7 @@ class AccountForm extends Component {
                       id="password"
                       type="password"
                       onChange={(event, newValue) =>
-                        this.setState({ username: newValue })}
+                        this.setState({ password: newValue })}
                     />
                   )}
                 />
