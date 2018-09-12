@@ -2,6 +2,12 @@ import { adopt } from 'react-adopt'
 import { Query, Mutation } from 'react-apollo'
 import React from 'react'
 import Button from '@material-ui/core/Button'
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Card from '@material-ui/core/Card';
+import Typography from '@material-ui/core/Typography';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 // @TODO: Uncommment this line when the ViewerProvider is added to the app.
 // import { ViewerContext } from '../context/ViewerProvider'
 // -------------------------------
@@ -21,19 +27,25 @@ const itemsData = ({ render }) => {
         if (loading) return null;
         if (error) return `Error!: ${error}`;
         console.log("data:", data.items)
+     
         return (
           data.items.map((item, index) => {
             return (
+              
               <div key={index}>
+              <Card>
                 <img src={item.imageurl} />
+                <p>{item.itemowner.fullname}</p>
                 <h1>{item.title}</h1>
                 <p>{item.tags.map((tag) => {
                   return `${tag.title}, `;
                 })}</p>
                 <p>{item.description}</p>
 
-                <Button>Borrow</Button>
+                
+                </Card>
               </div>
+              
             )
           })
         );
@@ -75,4 +87,4 @@ const ItemsContainer = adopt({
   // -------------------------------
 })
 
-export default ItemsContainer
+export default withStyles(ItemsContainer);
