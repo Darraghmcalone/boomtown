@@ -50,6 +50,7 @@ query {
         title
         imageurl
         description
+        created
         tags {
           id
           title
