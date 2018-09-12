@@ -45,13 +45,26 @@ import gql from 'graphql-tag'
 
 export const ALL_ITEMS_QUERY = gql`
 query {
- items {
-       id
-   title
-   description
-   imageurl
-     }
- }`
+    items {
+        id
+        title
+        imageurl
+        description
+        tags {
+          id
+          title
+        }
+        borrower {
+          id
+        }
+        itemowner{
+          id
+          fullname
+        }
+    
+      }
+    }
+    `
 
 // export const ALL_USER_ITEMS_QUERY = gql`
 //   query user($id: ID!, $bio: String, $email: String!, $fullname: String! ) {

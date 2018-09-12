@@ -25,10 +25,13 @@ const itemsData = ({ render }) => {
           data.items.map((item, index) => {
             return (
               <div key={index}>
-                <h1>{item.title}</h1>
-                <p>{item.description}</p>
                 <img src={item.imageurl} />
-                <p>{item.tags}</p>
+                <h1>{item.title}</h1>
+                <p>{item.tags.map((tag) => {
+                  return `${tag.title}, `;
+                })}</p>
+                <p>{item.description}</p>
+
                 <Button>Borrow</Button>
               </div>
             )
