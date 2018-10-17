@@ -11,19 +11,30 @@ import {
   SIGNUP_MUTATION
 } from '../apollo/queries'
 
-
-  const signup = ({ render }) => {
-    return <h1>signup
-    </h1>
-  }
-
-
+const signup = ({ render }) => {
+  return (
+    <Mutation
+      mutation={SIGNUP_MUTATION}
+      refetchQueries={result => [{ query: VIEWER_QUERY }]}
+    >
+      {(mutation, { data, error, loading }) =>
+        render({ mutation, data, error, loading })
+      }
+    </Mutation>
+  )
+}
 
 const login = ({ render }) => {
-  /**
-   * @TODO: Use Apollo's <Mutation /> component to use the login mutation.
-   */
-  return <h1>Login></h1>
+  return (
+    <Mutation
+      mutation={LOGIN_MUTATION}
+      refetchQueries={result => [{ query: VIEWER_QUERY }]}
+    >
+      {(mutation, { data, error, loading }) =>
+        render({ mutation, data, error, loading })
+      }
+    </Mutation>
+  )
 }
 
 const logout = ({ render }) => {
@@ -34,11 +45,8 @@ const logout = ({ render }) => {
 }
 
 const AuthContainer = adopt({
-  
   signup,
-  login,
-  logout
-  
+  login
 })
 
 export default AuthContainer

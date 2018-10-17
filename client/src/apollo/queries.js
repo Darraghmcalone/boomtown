@@ -96,13 +96,15 @@ query {
  * Auth-related queries and mutations.
  */
 
-// export const VIEWER_QUERY = gql`
-//   query viewer($id: ID!, $email: String!, $fullname: String!, $bio: String){
-//     viewer: User{
-//       ...ItemFields
-//     }
-//   }
-// `
+export const VIEWER_QUERY = gql`
+query {
+  viewer {
+    id
+    email
+    fullname
+  }
+}
+`
 
 // export const LOGOUT_MUTATION = gql`
 //   mutation {
@@ -110,16 +112,15 @@ query {
 //   }
 // `
 
-// export const SIGNUP_MUTATION = gql`
-//   mutation signup($user: SignupInput!) {
 
-//     ...itemfields
-//   }
-// `
+export const SIGNUP_MUTATION = gql`
+  mutation signup($user: SignUpInput!) {
+    signup(user: $user)
+  }
+`
+export const LOGIN_MUTATION = gql`
+  mutation login($user: LoginInput!) {
+    login(user: $user)
+  }
+`
 
-// export const LOGIN_MUTATION = gql`
-//   mutation login($user: LoginInput!) {
-//     # @TODO: Pass the user into the login mutation as an argument
-//     # and return the id of the new user when the mutation is complete.
-//   }
-// `
