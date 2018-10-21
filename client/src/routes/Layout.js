@@ -1,29 +1,30 @@
-import React, { Fragment } from 'react';
-import { Redirect, Route, Switch, Browser } from 'react-router';
-import Home from '../pages/Home';
-import Items from '../pages/Items';
-import Share from '../pages/Share';
-import Profile from '../pages/Profile';
-import Test from '../pages/Test';
-import Menu from '../components/Menu/menu'
+import React, { Fragment } from 'react'
+import { Redirect, Route, Switch } from 'react-router'
+import Home from './../pages/Home'
+import Items from './../pages/Items'
+import Profile from './../pages/Profile'
+import Share from './../pages/Share'
+import { ViewerContext } from '../context/ViewerProvider'
+import HeaderNav from '../components/HeaderNav/HeaderNav'
 
 export default () => (
-  <Fragment>
-    <div>
-     
-
-      <Switch>
-
-        <Route exact path="/welcome" component={Home} />
-        <Route exact path="/items" component={Items} />
-        <Route exact path="/test" component={Test} />
-        <Route exact path="/share" component={Share} />
-        <Route exact path="/profile" component={Profile} />
-        <Route exact path="/profile/:userid" component={Profile} />
-
-        <Redirect to='/items' />
-
-      </Switch>
-    </div>
-  </Fragment>
-);
+  <ViewerContext.Consumer>
+    {({ loading, viewer, error }) => {
+      if (loading) return '...Loading...'
+      return (
+        <Fragment>
+          <HeaderNav />
+          <Switch>
+            <div>
+              <Route exact path="/welcome" name="home" component={Home} />
+              <Route exact path="/items" component={Items} />
+              <Route exact path="/share" component={Share} />
+              <Route exact path="/profile" component={Profile} />
+              <Route exact path="/profile/:userid" component={Profile} />
+            </div>
+          </Switch>
+        </Fragment>
+      )
+    }}
+  </ViewerContext.Consumer>
+)
