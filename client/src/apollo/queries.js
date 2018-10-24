@@ -102,15 +102,16 @@ query {
     id
     email
     fullname
+    bio
   }
 }
 `
 
-// export const LOGOUT_MUTATION = gql`
-//   mutation {
-//     # @TODO: Run the logout mutation.
-//   }
-// `
+export const LOGOUT_MUTATION = gql`
+  mutation {
+    logout
+  }
+`;
 
 
 export const SIGNUP_MUTATION = gql`

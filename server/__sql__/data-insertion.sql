@@ -7,10 +7,10 @@ VALUES ('Household Items'),
 ('Garage Items'),
 ('Recreational Equipment');
 
-INSERT INTO users (email, fullname, bio)
+INSERT INTO users (fullname, email, password)
 VALUES
-    ('darara@live.co.uk', 'darragh', 'This is example 1'),
-    ('darragh@example.com', 'darragh example', 'making an example of Darragh...')
+    ('darragh','darragh@yahoo.co.uk', 'pass1'),
+    ('darragh example','darragh@live.co.uk', 'pass2')
 ;
 
 INSERT INTO items (ownerid, title, imageurl, description)

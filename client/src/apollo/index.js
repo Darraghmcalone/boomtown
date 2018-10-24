@@ -7,11 +7,10 @@ import { onError } from 'apollo-link-error'
 const httpWithUploadsLink = createUploadLink({
   includeExtensions: true,
   // @TODO: If `process.env.NODE_ENV !== 'production'`, then use localhost's GraphQL endpoint
-  uri: process.env.NODE_ENV === 'production' ? undefined : 'http://localhost:8080/graphql',
+  uri: 'http://localhost:8080/graphql',
   // -------------------------------
-  credentials: 'same-origin'
+  credentials: process.env.NODE_ENV === 'production' ? 'same-origin' : 'include'
 })
-
 
 const client = new ApolloClient({
   link: ApolloLink.from([
@@ -26,6 +25,7 @@ const client = new ApolloClient({
       }
       if (networkError) console.log(`[Network error]: ${networkError}`)
     }),
+
     httpWithUploadsLink
   ]),
   cache: new InMemoryCache() // Pull data from client-side cache, if available

@@ -15,13 +15,11 @@ export default () => (
         <Fragment>
           <HeaderNav />
           <Switch>
-            <div>
               <Route exact path="/welcome" name="home" component={Home} />
               <Route exact path="/items" component={Items} />
               <Route exact path="/share" component={Share} />
               <Route exact path="/profile" component={Profile} />
               <Route exact path="/profile/:userid" component={Profile} />
-            </div>
           </Switch>
         </Fragment>
       )

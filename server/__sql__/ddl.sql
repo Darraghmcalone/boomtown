@@ -12,8 +12,9 @@ CREATE TABLE "public"."tags" (
 
 CREATE TABLE "public"."users" (
    "id" serial PRIMARY KEY,
-   "email" text NOT NULL,
    "fullname" text NOT NULL,
+   "email" text NOT NULL,
+   "password" text NOT NULL,
    "bio" text
 );
 

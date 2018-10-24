@@ -17,8 +17,8 @@ const signup = ({ render }) => {
       mutation={SIGNUP_MUTATION}
       refetchQueries={result => [{ query: VIEWER_QUERY }]}
     >
-      {(mutation, { data, error, loading }) =>
-        render({ mutation, data, error, loading })
+      {(mutation, data, loading, error) =>
+        render({ mutation, data, loading, error })
       }
     </Mutation>
   )
@@ -30,8 +30,8 @@ const login = ({ render }) => {
       mutation={LOGIN_MUTATION}
       refetchQueries={result => [{ query: VIEWER_QUERY }]}
     >
-      {(mutation, { data, error, loading }) =>
-        render({ mutation, data, error, loading })
+      {(mutation, { data, loading, error }) =>
+        render({ mutation, data, loading, error })
       }
     </Mutation>
   )
@@ -41,7 +41,13 @@ const logout = ({ render }) => {
   /**
    * @TODO: Use Apollo's <Mutation /> component to use the logout mutation.
    */
-  return <h1>Logout</h1>
+  // return (
+  //   <Mutation mutation={LOGOUT_MUTATION}>
+  //     {(mutation, { data, loading, error }) =>
+  //       render({ mutation, data, loading, error })
+  //     }
+  //   </Mutation>
+  // )
 }
 
 const AuthContainer = adopt({

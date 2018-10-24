@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Darraghmcalone/boomtown#readme",
   "dependencies": {
     "apollo-server-express": "^2.0.0-rc.12",
+    "basic-auth": "^2.0.1",
     "express": "^4.16.3",
     "graphql": "^0.13.2"
   },
