@@ -7,7 +7,7 @@ import AddIcon from '@material-ui/icons/Add'
 import styles from './styles';
 
 
-function ShareButton(props) {
+const ShareButton = (props) =>{
   const { classes } = props
 
   return (
