@@ -4,24 +4,10 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import { Link } from 'react-router-dom'
 import Logo from '../../images/boomtown.svg'
-import MenueAppbar from '../../components/MenuAppBar'
+import MenuAppbar from '../../components/MenuAppBar'
+import ShareButton from '../../components/ShareButton'
+import styles from './styles'
 
-const styles = {
-  root: {
-    flexGrow: 1
-  },
-  flex: {
-    flexGrow: 1
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20
-  },
-  barContainer: {
-    display: 'flex',
-    justifyContent: 'space-between'
-  }
-}
 
 function HeaderNav(props) {
   const { classes } = props
@@ -33,11 +19,12 @@ function HeaderNav(props) {
             <img
               className={classes.logo}
               src={Logo}
-              style={{ width: 50, height: 50, marginLeft: -12, marginTop: 5 }}
+              style={{ width: 60, height: 52, marginLeft: -12, marginTop: 5 }}
             />
           </Link>
           <div style={{ display: 'flex', alignItems: 'center' }}>
-            <MenueAppbar />
+            <ShareButton />
+            <MenuAppbar />
           </div>
         </Toolbar>
       </AppBar>
